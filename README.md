@@ -34,3 +34,4 @@ As pe video chapters, it contains:
   - sqlc's role then is to hook up to goose and the SQL code we write to generate Go code (type safe) automatically, so we can then use the generated Go code to interact with the database
   - // this is a more manual process compared to ORMs (I mainly used Drizzle in Node.js), but it the benefit is we have way more control over the SQL queries and how our database changes;
   - // especially for migrations when a resource schema needs changing, ORMs are a bit harder to understand in what they're going to do to existing data; with goose we can choose that ourselves
+- a good idea is to have a package handling DTOs, or rather something that converts the database data to structs we want to use in our code / push to the end user; simplest example: don't give the user their internal id;
