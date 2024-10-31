@@ -35,3 +35,4 @@ As pe video chapters, it contains:
   - // this is a more manual process compared to ORMs (I mainly used Drizzle in Node.js), but it the benefit is we have way more control over the SQL queries and how our database changes;
   - // especially for migrations when a resource schema needs changing, ORMs are a bit harder to understand in what they're going to do to existing data; with goose we can choose that ourselves
 - a good idea is to have a package handling DTOs, or rather something that converts the database data to structs we want to use in our code / push to the end user; simplest example: don't give the user their internal id;
+- important note: this project doesn't necessarily follow a scalable structure; the handlers are in the main package after all
