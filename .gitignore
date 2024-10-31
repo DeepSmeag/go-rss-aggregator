@@ -2,3 +2,4 @@
 .vscode
 vendor
 go-rss-aggregator
+sql/schema/gooseMigration*.sh
