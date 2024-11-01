@@ -54,9 +54,6 @@ func scrapeFeed(db *database.Queries, wg *sync.WaitGroup, feed database.Feed) {
 		if item.Description != "" {
 			description.String = item.Description
 			description.Valid = true
-		} else {
-			description.String = ""
-			description.Valid = false
 		}
 		pubAt, err := time.Parse(time.RFC1123Z, item.PubDate)
 		if err != nil {
