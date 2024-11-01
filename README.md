@@ -16,7 +16,7 @@ As pe video chapters, it contains:
 
 ## What I've learned
 
-- lowercase/uppercase naming conventions for exporting functions to other packages applies to struct fields as well; the json.Marshal function could only serialize the fields if they were uppercase; similarly, if I'm trying to use/initialize a struct in another package, I only get the uppercase fields; this one's unintuitive
+- lowercase/uppercase naming conventions for exporting functions to other packages applies to struct fields as well; the json.Marshal function could only serialize the fields if they were uppercase; similarly, if I'm trying to use/initialize a struct in another package, I only get the uppercase fields; this one's unintuitive, I assumed it was only functions and variable/type names, not struct fields as well
 - and also learned that some people are in favor of commiting the vendor folder, since it's not that big; I don't understand the underlying reason enough to have an opinion on this yet
 
   - it has to do with ensuring the entire dev team works with the same dependencies, but I thought go.sum and go.mod files were enough for that
@@ -36,3 +36,4 @@ As pe video chapters, it contains:
   - // especially for migrations when a resource schema needs changing, ORMs are a bit harder to understand in what they're going to do to existing data; with goose we can choose that ourselves
 - a good idea is to have a package handling DTOs, or rather something that converts the database data to structs we want to use in our code / push to the end user; simplest example: don't give the user their internal id;
 - important note: this project doesn't necessarily follow a scalable structure; the handlers are in the main package after all (and the middleware is structured in a way that forces it to be in the same package as the handlers)
+- we can specify json tags for struct fields to decide their names when they're serialized; this also applies to xml so it's nice to know about; use this in conjunction with json Marshal/Unmarshal functions and xml as well

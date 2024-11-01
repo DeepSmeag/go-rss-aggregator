@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/DeepSmeag/go-rss-aggregator/internal/database"
 	chi "github.com/go-chi/chi/v5"
@@ -20,6 +21,7 @@ type apiConfig struct {
 }
 
 func main() {
+
 	godotenv.Load() // load .env by default; otherwise specify file path
 	portString := os.Getenv("PORT")
 	if portString == "" {
@@ -33,11 +35,13 @@ func main() {
 	if err != nil {
 		log.Fatal("Can't connect to database", err)
 	}
-	queries := database.New(conn)
 
+	queries := database.New(conn)
 	apiCfg := apiConfig{
 		DB: queries,
 	}
+
+	go startScraping(queries, 10, time.Minute)
 
 	router := chi.NewRouter()
 	srv := &http.Server{
